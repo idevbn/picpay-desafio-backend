@@ -1,4 +1,4 @@
-package domain.models;
+package com.picpay.challenge.domain.models;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;

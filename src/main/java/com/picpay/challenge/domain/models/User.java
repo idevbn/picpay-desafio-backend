@@ -1,6 +1,6 @@
-package domain.models;
+package com.picpay.challenge.domain.models;
 
-import domain.enums.UserType;
+import com.picpay.challenge.domain.enums.UserType;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
