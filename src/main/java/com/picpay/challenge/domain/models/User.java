@@ -1,9 +1,11 @@
 package com.picpay.challenge.domain.models;
 
 import com.picpay.challenge.domain.enums.UserType;
+import com.picpay.challenge.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -12,6 +14,7 @@ import java.math.BigDecimal;
 @Setter
 @Entity(name = "users")
 @Table(name = "tb_users")
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User {
 
@@ -28,5 +31,15 @@ public class User {
     private BigDecimal balance;
     @Enumerated(value = EnumType.STRING)
     private UserType userType;
+
+    public User(final UserDTO userDTO) {
+        this.firstName = userDTO.firstName();
+        this.lastName = userDTO.lastName();
+        this.cpf = userDTO.cpf();
+        this.balance = userDTO.balance();
+        this.email = userDTO.email();
+        this.userType = UserType.valueOf(userDTO.type());
+        this.password = userDTO.password();
+    }
 
 }
