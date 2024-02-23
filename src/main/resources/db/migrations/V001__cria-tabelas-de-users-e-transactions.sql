@@ -13,8 +13,6 @@ CREATE TABLE tb_users (
 CREATE TABLE tb_transactions (
   id SERIAL PRIMARY KEY,
   amount NUMERIC(12, 2) NOT NULL,
-  sender VARCHAR(50) NOT NULL,
-  receiver VARCHAR(50) NOT NULL,
   timestamp TIMESTAMP WITHOUT TIME ZONE,
   CONSTRAINT fkey_transactions_users FOREIGN KEY(id) REFERENCES tb_users(id)
 );
