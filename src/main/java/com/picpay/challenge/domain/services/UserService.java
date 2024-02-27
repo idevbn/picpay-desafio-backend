@@ -8,6 +8,7 @@ import com.picpay.challenge.domain.models.User;
 import com.picpay.challenge.domain.repositories.UserRepository;
 import com.picpay.challenge.dtos.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -17,10 +18,12 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(final UserRepository userRepository) {
+    public UserService(final UserRepository userRepository, final PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void validateTransaction(final User sender, final BigDecimal amount) {
@@ -43,6 +46,8 @@ public class UserService {
 
     public User createUser(final UserDTO userDTO) {
         final User user = new User(userDTO);
+
+        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 
         this.saveUser(user);
 
