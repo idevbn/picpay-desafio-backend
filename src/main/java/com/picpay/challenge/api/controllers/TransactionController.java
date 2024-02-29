@@ -2,7 +2,7 @@ package com.picpay.challenge.api.controllers;
 
 import com.picpay.challenge.domain.models.Transaction;
 import com.picpay.challenge.domain.services.TransactionService;
-import com.picpay.challenge.dtos.TransactionDTO;
+import com.picpay.challenge.records.TransactionRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,10 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody final TransactionDTO transactionDTO) {
-        final Transaction transaction = this.transactionService.createTransaction(transactionDTO);
+    public ResponseEntity<Transaction> createTransaction(
+            @RequestBody final TransactionRecord transactionRecord
+    ) {
+        final Transaction transaction = this.transactionService.createTransaction(transactionRecord);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
     }

@@ -4,7 +4,7 @@ import com.picpay.challenge.domain.exceptions.TransactionNotAuthorizedException;
 import com.picpay.challenge.domain.models.Transaction;
 import com.picpay.challenge.domain.models.User;
 import com.picpay.challenge.domain.repositories.TransactionRepository;
-import com.picpay.challenge.dtos.TransactionDTO;
+import com.picpay.challenge.records.TransactionRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class TransactionService {
         this.restTemplate = restTemplate;
     }
 
-    public Transaction createTransaction(final TransactionDTO transaction) {
+    public Transaction createTransaction(final TransactionRecord transaction) {
         final User sender = this.userService.findUserById(transaction.senderId());
         final User receiver = this.userService.findUserById(transaction.receiverId());
 

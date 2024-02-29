@@ -2,7 +2,7 @@ package com.picpay.challenge.api.controllers;
 
 import com.picpay.challenge.domain.models.User;
 import com.picpay.challenge.domain.services.UserService;
-import com.picpay.challenge.dtos.UserDTO;
+import com.picpay.challenge.records.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +36,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody final UserDTO userDTO) {
-        final User user = this.userService.createUser(userDTO);
+    public ResponseEntity<User> createUser(@RequestBody final UserRecord userRecord) {
+        final User user = this.userService.createUser(userRecord);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }

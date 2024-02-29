@@ -6,7 +6,7 @@ import com.picpay.challenge.domain.exceptions.InsufficientBalanceException;
 import com.picpay.challenge.domain.exceptions.UserNotFoundException;
 import com.picpay.challenge.domain.models.User;
 import com.picpay.challenge.domain.repositories.UserRepository;
-import com.picpay.challenge.dtos.UserDTO;
+import com.picpay.challenge.records.UserRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,8 +44,8 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public User createUser(final UserDTO userDTO) {
-        final User user = new User(userDTO);
+    public User createUser(final UserRecord userRecord) {
+        final User user = new User(userRecord);
 
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 

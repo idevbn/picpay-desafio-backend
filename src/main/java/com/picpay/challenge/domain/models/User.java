@@ -1,7 +1,7 @@
 package com.picpay.challenge.domain.models;
 
 import com.picpay.challenge.domain.enums.UserType;
-import com.picpay.challenge.dtos.UserDTO;
+import com.picpay.challenge.records.UserRecord;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,14 +32,14 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserType userType;
 
-    public User(final UserDTO userDTO) {
-        this.firstName = userDTO.firstName();
-        this.lastName = userDTO.lastName();
-        this.cpf = userDTO.cpf();
-        this.balance = userDTO.balance();
-        this.email = userDTO.email();
-        this.userType = UserType.valueOf(userDTO.type());
-        this.password = userDTO.password();
+    public User(final UserRecord userRecord) {
+        this.firstName = userRecord.firstName();
+        this.lastName = userRecord.lastName();
+        this.cpf = userRecord.cpf();
+        this.balance = userRecord.balance();
+        this.email = userRecord.email();
+        this.userType = UserType.valueOf(userRecord.type());
+        this.password = userRecord.password();
     }
 
 }

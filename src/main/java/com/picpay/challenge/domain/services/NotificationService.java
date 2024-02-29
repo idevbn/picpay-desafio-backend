@@ -1,7 +1,7 @@
 package com.picpay.challenge.domain.services;
 
 import com.picpay.challenge.domain.models.User;
-import com.picpay.challenge.dtos.NotificationDTO;
+import com.picpay.challenge.records.NotificationRecord;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +27,7 @@ public class NotificationService {
     public void sendNotification(final User user, final String message) {
         final String email = user.getEmail();
 
-        final NotificationDTO notificationRequest = new NotificationDTO(email, message);
+        final NotificationRecord notificationRequest = new NotificationRecord(email, message);
 
         final ResponseEntity<String> notificationResponse = this.restTemplate
                 .postForEntity(this.NOTIFICATION_URL, notificationRequest, String.class);
