@@ -1,8 +1,8 @@
-package com.picpay.challenge.dtos;
+package com.picpay.challenge.records;
 
 import java.math.BigDecimal;
 
-public record UserDTO(
+public record UserRecord(
         String firstName,
         String lastName,
         String cpf,
