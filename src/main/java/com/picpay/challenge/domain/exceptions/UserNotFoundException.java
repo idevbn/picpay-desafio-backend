@@ -10,8 +10,12 @@ public class UserNotFoundException extends RuntimeException implements HttpExcep
     private final Long id;
 
     public UserNotFoundException(final Long id) {
-        super();
         this.id = id;
+    }
+
+    @Override
+    public String getErrorCode() {
+        return "picpay.api.exceptions.user.not-found";
     }
 
     @Override

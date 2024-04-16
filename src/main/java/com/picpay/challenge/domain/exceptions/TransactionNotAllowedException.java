@@ -6,6 +6,11 @@ import org.springframework.http.HttpStatus;
 public class TransactionNotAllowedException extends RuntimeException implements HttpException {
 
     @Override
+    public String getErrorCode() {
+        return "picpay.api.exceptions.transaction.shopkeeper.not-allowed";
+    }
+
+    @Override
     public HttpStatus getHttpStatus() {
         return HttpStatus.BAD_REQUEST;
     }
