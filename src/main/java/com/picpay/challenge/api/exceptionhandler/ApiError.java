@@ -13,7 +13,7 @@ import java.util.List;
 public class ApiError {
 
     private HttpStatus status;
-    private String resumo;
+    private String resume;
     private List<String> errors;
 
     public static ApiError of(final HttpStatus status,
