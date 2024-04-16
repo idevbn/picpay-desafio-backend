@@ -31,7 +31,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         logger.info(ex);
 
         final String errorMsg = this.messageSource.getMessage(
-                "picpay.api.exceptions.user.not-found",
+                ex.getErrorCode(),
                 ex.getErrorMessageParams(),
                 LocaleContextHolder.getLocale()
         );
@@ -52,7 +52,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         logger.info(ex);
 
         final String errorMsg = this.messageSource.getMessage(
-                "picpay.api.exceptions.transaction.shopkeeper.not-allowed",
+                ex.getErrorCode(),
                 ex.getErrorMessageParams(),
                 LocaleContextHolder.getLocale()
         );
@@ -73,7 +73,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         logger.info(ex);
 
         final String errorMsg = this.messageSource.getMessage(
-                "picpay.api.exceptions.transaction.not-authorized",
+                ex.getErrorCode(),
                 ex.getErrorMessageParams(),
                 LocaleContextHolder.getLocale()
         );
@@ -94,7 +94,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         logger.info(ex);
 
         final String errorMsg = this.messageSource.getMessage(
-                "picpay.api.exceptions.transaction.balance.insufficient",
+                ex.getErrorCode(),
                 ex.getErrorMessageParams(),
                 LocaleContextHolder.getLocale()
         );
