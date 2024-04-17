@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Entity(name = "users")
+@Entity
 @Table(name = "tb_users")
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
